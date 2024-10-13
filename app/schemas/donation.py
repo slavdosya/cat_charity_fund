@@ -4,7 +4,7 @@ from typing import Optional
 from pydantic import BaseModel, Extra, Field, PositiveInt
 
 from app.constants import DEFAULT_INVESTED_AMOUNT
-from app.schemas.constants import DONATE_EXAMPLE
+from app.schemas.constants import EXTRA_SCHEMA_EXAMPLE, INVESTED_AMOUNT
 
 
 class DonationBase(BaseModel):
@@ -22,8 +22,7 @@ class DonationCreate(DonationBase):
         title = 'Схема пожертвования для создания'
         schema_extra = {
             'example': {
-                'comment': 'От всей души',
-                'full_amount': DONATE_EXAMPLE
+                **EXTRA_SCHEMA_EXAMPLE
             }
         }
 
@@ -37,8 +36,7 @@ class DonationDB(DonationBase):
         orm_mode = True
         schema_extra = {
             'example': {
-                'comment': 'От всей души',
-                'full_amount': DONATE_EXAMPLE,
+                **EXTRA_SCHEMA_EXAMPLE,
                 'id': 2,
                 'create_date': '2023-07-21T23:54:05.177Z'
             }
@@ -59,12 +57,11 @@ class DonationDBSuper(DonationDB):
         orm_mode = True
         schema_extra = {
             'example': {
-                'comment': 'От всей души',
-                'full_amount': DONATE_EXAMPLE,
+                **EXTRA_SCHEMA_EXAMPLE,
                 'id': 2,
                 'create_date': '2023-07-21T23:54:05.177Z',
                 'user_id': 1,
-                'invested_amount': 200,
+                'invested_amount': INVESTED_AMOUNT,
                 'fully_invested': 0
             }
         }

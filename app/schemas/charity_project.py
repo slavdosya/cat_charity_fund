@@ -6,7 +6,7 @@ from pydantic import BaseModel, Extra, Field, PositiveInt, validator
 from app.constants import DEFAULT_INVESTED_AMOUNT
 from app.schemas.constants import (
     FULL_AMOUNT, FULLY_INVEST_EXAMPLE, ID_EXAMPLE,
-    INVESTED_AMOUNT, MAX_LEN_NAME, MIN_LEN_NAME
+    INVESTED_AMOUNT, MAX_LEN_NAME, MIN_LEN_NAME,
 )
 
 
@@ -14,8 +14,8 @@ class CharityProjectBase(BaseModel):
     name: Optional[str] = Field(
         None,
         title='Название',
-        min_length=1,
-        max_length=100,
+        min_length=MIN_LEN_NAME,
+        max_length=MAX_LEN_NAME,
     )
     description: Optional[str] = Field(None, title='Описание')
     full_amount: Optional[PositiveInt] = Field(None, title='Требуемая сумма')

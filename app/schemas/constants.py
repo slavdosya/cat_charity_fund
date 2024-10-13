@@ -5,3 +5,7 @@ INVESTED_AMOUNT = 360
 ID_EXAMPLE = 19
 FULLY_INVEST_EXAMPLE = 0
 DONATE_EXAMPLE = 450
+EXTRA_SCHEMA_EXAMPLE = {
+    'comment': 'От всей души',
+    'full_amount': DONATE_EXAMPLE
+}
