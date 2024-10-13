@@ -5,6 +5,7 @@ from typing import Optional
 from pydantic import BaseSettings, EmailStr
 
 from app.constants import BASE_DIR, DT_FORMAT, LOG_FORMAT
+from app.core.constants import BACKUP_COUNT, MAX_BYTES
 
 
 class Settings(BaseSettings):
@@ -27,7 +28,7 @@ def configure_logging():
     log_dir.mkdir(exist_ok=True)
     log_file = log_dir / 'qrkot.log'
     rotating_handler = RotatingFileHandler(
-        log_file, maxBytes=10 ** 6, backupCount=5
+        log_file, maxBytes=MAX_BYTES, backupCount=BACKUP_COUNT
     )
     logging.basicConfig(
         datefmt=DT_FORMAT,

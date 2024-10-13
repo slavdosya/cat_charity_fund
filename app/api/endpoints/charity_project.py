@@ -62,8 +62,7 @@ async def create_new_charity_project(
     response_model_exclude_none=True,
 )
 async def get_all_projects(session: AsyncSession = Depends(get_async_session)):
-    projects = await charity_project_crud.get_multi(session)
-    return projects
+    return await charity_project_crud.get_multi(session)
 
 
 @router.patch(
@@ -108,7 +107,6 @@ async def remove_charity_project(
     """Только для суперюзеров."""
     charity_project = await check_project_exists(project_id, session)
     await check_invested_amount(project_id, session)
-    charity_project = await charity_project_crud.remove(
+    return await charity_project_crud.remove(
         charity_project, session
     )
-    return charity_project

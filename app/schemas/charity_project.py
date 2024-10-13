@@ -4,6 +4,7 @@ from typing import Optional
 from pydantic import BaseModel, Extra, Field, PositiveInt, validator
 
 from app.constants import DEFAULT_INVESTED_AMOUNT
+from app.schemas.constants import FULL_AMOUNT, FULLY_INVEST_EXAMPLE, ID_EXAMPLE, INVESTED_AMOUNT, MAX_LEN_NAME, MIN_LEN_NAME
 
 
 class CharityProjectBase(BaseModel):
@@ -30,7 +31,7 @@ class CharityProjectUpdate(CharityProjectBase):
             'example': {
                 'name': 'Нужны игрушки',
                 'description': 'Для всех котиков мира',
-                'full_amount': 1000
+                'full_amount': FULL_AMOUNT
             }
         }
 
@@ -51,8 +52,8 @@ class CharityProjectCreate(CharityProjectUpdate):
     name: str = Field(
         ...,
         title='Название',
-        min_length=1,
-        max_length=100,
+        min_length=MIN_LEN_NAME,
+        max_length=MAX_LEN_NAME,
     )
     description: str = Field(..., title='Описание')
     full_amount: PositiveInt = Field(..., title='Требуемая сумма')
@@ -79,10 +80,10 @@ class CharityProjectDB(CharityProjectCreate):
             'example': {
                 'name': 'Песики - наше все',
                 'description': 'очень хочу им помочь',
-                'full_amoun': 1500,
-                'id': 19,
-                'invested_amount': 360,
-                'fully_invested': 0,
+                'full_amoun': FULL_AMOUNT,
+                'id': ID_EXAMPLE,
+                'invested_amount': INVESTED_AMOUNT,
+                'fully_invested': FULLY_INVEST_EXAMPLE,
                 'create_date': '2023-07-22T02:18:40.662286'
             }
         }
