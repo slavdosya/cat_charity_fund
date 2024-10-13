@@ -4,7 +4,10 @@ from typing import Optional
 from pydantic import BaseModel, Extra, Field, PositiveInt, validator
 
 from app.constants import DEFAULT_INVESTED_AMOUNT
-from app.schemas.constants import FULL_AMOUNT, FULLY_INVEST_EXAMPLE, ID_EXAMPLE, INVESTED_AMOUNT, MAX_LEN_NAME, MIN_LEN_NAME
+from app.schemas.constants import (
+    FULL_AMOUNT, FULLY_INVEST_EXAMPLE, ID_EXAMPLE,
+    INVESTED_AMOUNT, MAX_LEN_NAME, MIN_LEN_NAME
+)
 
 
 class CharityProjectBase(BaseModel):
